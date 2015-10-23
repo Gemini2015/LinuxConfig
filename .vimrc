@@ -50,12 +50,6 @@ filetype plugin indent on
 " Display Begin
 """""""""""""""""""""""""""""""""""""""""""""""""
 
-" 字体
-set guifont=Consolas:11
-
-" 开启 xterm 256 色
-set t_Co=256
-
 " 开启语法高亮
 syntax on
 
@@ -129,6 +123,7 @@ set noeb
 set encoding=utf-8
 set enc=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set fileencodings=utf-8,gbk,gb18030,gb2312
 
 " 括号匹配
 set showmatch
@@ -149,7 +144,20 @@ set tags=./tags,tags
 set showcmd
 
 "共享剪贴板  
-set clipboard+=unnamed 
+set clipboard+=unnamed
+
+if has('gui_running')
+	set guioptions-=T
+	source $VIMRUNTIME/delmenu.vim
+	source $VIMRUNTIME/menu.vim
+	language messages zh_CN.utf-8
+	set guifont=Consolas:h11
+else
+	" 开启 xterm 256 色
+	set t_Co=256
+	set guifont=Consolas:11
+endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Configuration End
