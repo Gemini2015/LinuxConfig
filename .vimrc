@@ -33,6 +33,9 @@ Plugin 'bling/vim-airline'
 " 注释
 Plugin 'scrooloose/nerdcommenter'
 
+" typescript
+Plugin 'leafgarland/typescript-vim'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -81,6 +84,7 @@ set helplang=cn
 
 " Tab键的宽度
 set tabstop=4
+set ts=4
 
 " 统一缩进为4
 set softtabstop=4
@@ -94,6 +98,31 @@ set smarttab
 
 " 自动缩进
 set cindent
+
+
+function! SetupPython()
+    " Here, you can have the final say on what is set.  So
+    " fixup any settings you don't like.
+	setlocal shiftwidth=4 
+	setlocal tabstop=4 
+	setlocal softtabstop=4 
+	setlocal expandtab 
+	setlocal smarttab 
+endfunction
+command! -bar SetupPython call SetupPython()
+
+function! AllSpace()
+	setlocal ts=4
+	setlocal expandtab
+	%retab!
+endfunction
+
+function! AllTab()
+	setlocal ts=4
+	setlocal noexpandtab
+	%retab!
+endfunction
+
 
 "
 " Tab & Indent End
